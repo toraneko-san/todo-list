@@ -20,8 +20,6 @@ export default function TaskList() {
       id === task.id ? { ...task, isDone: !task.isDone } : task
     );
 
-    console.log(newTasks);
-
     setTasks(newTasks);
   }
 
