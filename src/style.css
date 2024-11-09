@@ -1,4 +1,4 @@
-* {
+body {
   font-family: "Lexend Deca";
 }
 
@@ -17,9 +17,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   border-radius: 4px;
   padding: 10px 20px;
   border: 2px solid gray;
+  word-break: break-word;
 }
 
 .task-item div {
@@ -48,4 +50,14 @@ ion-icon {
 
 .icon-delete {
   color: red;
+}
+
+.task-button {
+  border-radius: 4px;
+  padding: 10px 0;
+  margin: 20px 0;
+  background-color: darkcyan;
+  color: white;
+  text-align: center;
+  cursor: pointer;
 }

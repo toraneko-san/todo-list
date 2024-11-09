@@ -6,8 +6,20 @@ export default function TaskList() {
     { id: crypto.randomUUID(), name: "Done Task", isDone: true },
   ]);
 
+  function addTask() {
+    const newTaskName = prompt("New task: ");
+
+    setTasks([
+      ...tasks,
+      { id: crypto.randomUUID(), name: newTaskName, isDone: false },
+    ]);
+  }
+
   return (
     <div className="task-container">
+      <div className="task-button" onClick={addTask}>
+        Add new task
+      </div>
       <ul className="task-list">
         {tasks.map(({ id, name, isDone }) => {
           return (
