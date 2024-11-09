@@ -1,0 +1,51 @@
+* {
+  font-family: "Lexend Deca";
+}
+
+.task-container {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  padding: 10px 20px;
+  border: 2px solid gray;
+}
+
+.task-item div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.task-done {
+  color: red;
+  text-decoration: line-through;
+}
+
+ion-icon {
+  cursor: pointer;
+  --ionicon-stroke-width: 50px;
+}
+
+.icon-done {
+  color: green;
+}
+
+.icon-update {
+  color: orange;
+}
+
+.icon-delete {
+  color: red;
+}
