@@ -15,9 +15,18 @@ export default function TaskList() {
     ]);
   }
 
-  function changeTaskState(id) {
+  function updateTaskState(id) {
     const newTasks = tasks.map((task) =>
       id === task.id ? { ...task, isDone: !task.isDone } : task
+    );
+
+    setTasks(newTasks);
+  }
+
+  function updateTaskName(id) {
+    const updatedTaskName = prompt("Change task name to: ");
+    const newTasks = tasks.map((task) =>
+      id === task.id ? { ...task, name: updatedTaskName } : task
     );
 
     setTasks(newTasks);
@@ -29,29 +38,24 @@ export default function TaskList() {
         Add new task
       </div>
       <ul className="task-list">
-        {tasks.map(({ id, name, isDone }) => {
-          return (
-            <li key={id} className={`task-item ${isDone && "task-done"}`}>
-              {name}
-              <div>
-                {isDone ? (
-                  <ion-icon
-                    class="icon-done"
-                    name="checkbox-outline"
-                    onClick={() => changeTaskState(id)}
-                  />
-                ) : (
-                  <ion-icon
-                    name="square-outline"
-                    onClick={() => changeTaskState(id)}
-                  />
-                )}
-                <ion-icon class="icon-update" name="pencil" />
-                <ion-icon class="icon-delete" name="trash" />
-              </div>
-            </li>
-          );
-        })}
+        {tasks.map(({ id, name, isDone }) => (
+          <li key={id} className={`task-item ${isDone && "task-done"}`}>
+            {name}
+            <div>
+              <ion-icon
+                class={isDone && "icon-done"}
+                name={isDone ? "checkbox-outline" : "square-outline"}
+                onClick={() => updateTaskState(id)}
+              />
+              <ion-icon
+                class="icon-update"
+                name="pencil"
+                onClick={() => updateTaskName(id)}
+              />
+              <ion-icon class="icon-delete" name="trash" />
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );
