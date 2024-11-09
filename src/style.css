@@ -49,3 +49,13 @@ ion-icon {
 .icon-delete {
   color: red;
 }
+
+.button {
+  border-radius: 4px;
+  padding: 10px 0;
+  margin: 20px 0;
+  background-color: darkcyan;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}

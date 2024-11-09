@@ -8,6 +8,7 @@ export default function TaskList() {
 
   return (
     <div className="task-container">
+      <div className="button">Add new task</div>
       <ul className="task-list">
         {tasks.map(({ id, name, isDone }) => {
           return (
