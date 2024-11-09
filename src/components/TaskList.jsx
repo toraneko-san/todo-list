@@ -5,6 +5,7 @@ export default function TaskList() {
     { id: crypto.randomUUID(), name: "Todo Task", isDone: false },
     { id: crypto.randomUUID(), name: "Done Task", isDone: true },
   ]);
+  const [category, setCategory] = useState("all");
 
   function addTask() {
     const newTaskName = prompt("New task: ");
@@ -32,13 +33,36 @@ export default function TaskList() {
     setTasks(newTasks);
   }
 
+  const visibleTasks = tasks.filter(({ isDone }) => {
+    switch (category) {
+      case "todo":
+        return !isDone;
+      case "done":
+        return isDone;
+      default:
+        return true;
+    }
+  });
+
   return (
     <div className="task-container">
       <div className="task-button" onClick={addTask}>
         Add new task
       </div>
+      <h1>Todo List</h1>
+      <div className="task-button-container">
+        <div className="task-button" onClick={() => setCategory("all")}>
+          All
+        </div>
+        <div className="task-button" onClick={() => setCategory("todo")}>
+          Todo
+        </div>
+        <div className="task-button" onClick={() => setCategory("done")}>
+          Done
+        </div>
+      </div>
       <ul className="task-list">
-        {tasks.map(({ id, name, isDone }) => (
+        {visibleTasks.map(({ id, name, isDone }) => (
           <li key={id} className={`task-item ${isDone && "task-done"}`}>
             {name}
             <div>
