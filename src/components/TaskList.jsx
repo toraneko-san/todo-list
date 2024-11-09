@@ -23,6 +23,15 @@ export default function TaskList() {
     setTasks(newTasks);
   }
 
+  function updateTaskName(id) {
+    const updatedTaskName = prompt("Change task name to: ");
+    const newTasks = tasks.map((task) =>
+      id === task.id ? { ...task, name: updatedTaskName } : task
+    );
+
+    setTasks(newTasks);
+  }
+
   return (
     <div className="task-container">
       <div className="task-button" onClick={addTask}>
@@ -46,7 +55,11 @@ export default function TaskList() {
                     onClick={() => changeTaskState(id)}
                   />
                 )}
-                <ion-icon class="icon-update" name="pencil" />
+                <ion-icon
+                  class="icon-update"
+                  name="pencil"
+                  onClick={() => updateTaskName(id)}
+                />
                 <ion-icon class="icon-delete" name="trash" />
               </div>
             </li>
