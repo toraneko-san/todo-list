@@ -2,6 +2,11 @@ body {
   font-family: "Lexend Deca";
 }
 
+h1 {
+  font-size: xx-large;
+  text-align: center;
+}
+
 .task-container {
   margin: 0 auto;
   padding: 10px 20px;
@@ -58,10 +63,17 @@ ion-icon:hover {
   color: red;
 }
 
+.task-button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
 .task-button {
   border-radius: 4px;
   padding: 10px 0;
   margin: 20px 0;
+  width: 100%;
   background-color: darkcyan;
   color: white;
   text-align: center;

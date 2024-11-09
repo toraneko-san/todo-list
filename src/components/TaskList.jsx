@@ -37,6 +37,12 @@ export default function TaskList() {
       <div className="task-button" onClick={addTask}>
         Add new task
       </div>
+      <h1>Todo List</h1>
+      <div className="task-button-container">
+        <div className="task-button">All</div>
+        <div className="task-button">Todo</div>
+        <div className="task-button">Done</div>
+      </div>
       <ul className="task-list">
         {tasks.map(({ id, name, isDone }) => (
           <li key={id} className={`task-item ${isDone && "task-done"}`}>
