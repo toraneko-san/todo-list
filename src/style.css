@@ -42,6 +42,10 @@ ion-icon {
   --ionicon-stroke-width: 50px;
 }
 
+ion-icon:hover {
+  transform: scale(1.2);
+}
+
 .icon-done {
   color: green;
 }
@@ -62,4 +66,8 @@ ion-icon {
   color: white;
   text-align: center;
   cursor: pointer;
+}
+
+.task-button:hover {
+  transform: scale(1.05);
 }
