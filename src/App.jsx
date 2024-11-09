@@ -1,5 +1,10 @@
-function App() {
-  return <></>;
-}
+import TaskList from "./components/TaskList";
+import "./style.css";
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <TaskList />
+    </>
+  );
+}
