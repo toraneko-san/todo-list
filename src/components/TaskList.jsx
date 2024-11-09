@@ -15,7 +15,7 @@ export default function TaskList() {
     ]);
   }
 
-  function changeTaskState(id) {
+  function updateTaskState(id) {
     const newTasks = tasks.map((task) =>
       id === task.id ? { ...task, isDone: !task.isDone } : task
     );
@@ -47,12 +47,12 @@ export default function TaskList() {
                   <ion-icon
                     class="icon-done"
                     name="checkbox-outline"
-                    onClick={() => changeTaskState(id)}
+                    onClick={() => updateTaskState(id)}
                   />
                 ) : (
                   <ion-icon
                     name="square-outline"
-                    onClick={() => changeTaskState(id)}
+                    onClick={() => updateTaskState(id)}
                   />
                 )}
                 <ion-icon
