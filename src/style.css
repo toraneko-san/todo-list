@@ -37,6 +37,7 @@ body {
 
 ion-icon {
   cursor: pointer;
+  visibility: visible;
   --ionicon-stroke-width: 50px;
 }
 
