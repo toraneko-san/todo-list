@@ -83,3 +83,7 @@ ion-icon:hover {
 .task-button:hover {
   transform: scale(1.05);
 }
+
+.task-button-red {
+  background-color: crimson;
+}

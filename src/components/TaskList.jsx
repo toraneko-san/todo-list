@@ -81,6 +81,10 @@ export default function TaskList() {
           </li>
         ))}
       </ul>
+      <div className="task-button-container">
+        <div className="task-button task-button-red">Delete done tasks</div>
+        <div className="task-button task-button-red">Delete all tasks</div>
+      </div>
     </div>
   );
 }
