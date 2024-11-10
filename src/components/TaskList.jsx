@@ -5,15 +5,18 @@ export default function TaskList() {
     { id: crypto.randomUUID(), name: "Todo Task", isDone: false },
     { id: crypto.randomUUID(), name: "Done Task", isDone: true },
   ]);
+  const [newTaskName, setNewTaskName] = useState("");
   const [category, setCategory] = useState(null);
 
   function addTask() {
-    const newTaskName = prompt("New task: ");
+    const newTask = {
+      id: crypto.randomUUID(),
+      name: newTaskName,
+      isDone: false,
+    };
 
-    setTasks([
-      ...tasks,
-      { id: crypto.randomUUID(), name: newTaskName, isDone: false },
-    ]);
+    setTasks([...tasks, newTask]);
+    setNewTaskName("");
   }
 
   function updateTaskState(id) {
@@ -47,6 +50,12 @@ export default function TaskList() {
 
   return (
     <div className="task-container">
+      <input
+        type="text"
+        value={newTaskName}
+        placeholder="New task"
+        onChange={(e) => setNewTaskName(e.target.value)}
+      />
       <div className="task-button" onClick={addTask}>
         Add new task
       </div>

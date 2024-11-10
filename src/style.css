@@ -1,5 +1,17 @@
+* {
+  box-sizing: border-box;
+  font-family: "Lexend Deca";
+}
+
 body {
   font-family: "Lexend Deca";
+}
+
+input {
+  padding: 10px;
+  border: 2px solid gray;
+  border-radius: 4px;
+  width: 100%;
 }
 
 h1 {
@@ -9,7 +21,7 @@ h1 {
 
 .task-container {
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 20px;
   width: 600px;
 }
 
@@ -24,9 +36,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  border: 2px solid gray;
   border-radius: 4px;
   padding: 10px 20px;
-  border: 2px solid gray;
   word-break: break-word;
 }
 
