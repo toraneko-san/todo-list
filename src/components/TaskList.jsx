@@ -34,16 +34,9 @@ export default function TaskList() {
   }
 
   function deleteTasks(type, deleteId = null) {
-    const newTaskList = tasks.filter(({ id, isDone }) => {
-      switch (type) {
-        case "done":
-          return !isDone;
-        case "single":
-          return id !== deleteId;
-        default:
-          return false;
-      }
-    });
+    const newTaskList = tasks.filter(({ id, isDone }) =>
+      type == "single" ? id !== deleteId : type == "done" ? !isDone : false
+    );
 
     setTasks(newTaskList);
   }
@@ -102,7 +95,7 @@ export default function TaskList() {
         </div>
         <div
           className="task-button task-button-red"
-          onClick={() => deleteTasks()}
+          onClick={() => deleteTasks(null)}
         >
           Delete all tasks
         </div>
