@@ -33,6 +33,21 @@ export default function TaskList() {
     setTasks(newTasks);
   }
 
+  function deleteTasks(type, deleteId = null) {
+    const newTaskList = tasks.filter(({ id, isDone }) => {
+      switch (type) {
+        case "done":
+          return !isDone;
+        case "single":
+          return id !== deleteId;
+        default:
+          return false;
+      }
+    });
+
+    setTasks(newTaskList);
+  }
+
   const visibleTasks = tasks.filter(({ isDone }) => {
     switch (category) {
       case "todo":
@@ -76,14 +91,28 @@ export default function TaskList() {
                 name="pencil"
                 onClick={() => updateTaskName(id)}
               />
-              <ion-icon class="icon-delete" name="trash" />
+              <ion-icon
+                class="icon-delete"
+                name="trash"
+                onClick={() => deleteTasks("single", id)}
+              />
             </div>
           </li>
         ))}
       </ul>
       <div className="task-button-container">
-        <div className="task-button task-button-red">Delete done tasks</div>
-        <div className="task-button task-button-red">Delete all tasks</div>
+        <div
+          className="task-button task-button-red"
+          onClick={() => deleteTasks("done")}
+        >
+          Delete done tasks
+        </div>
+        <div
+          className="task-button task-button-red"
+          onClick={() => deleteTasks()}
+        >
+          Delete all tasks
+        </div>
       </div>
     </div>
   );
