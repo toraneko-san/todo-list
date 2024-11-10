@@ -8,7 +8,7 @@ export default function TaskList() {
   const [newTaskName, setNewTaskName] = useState("");
   const [category, setCategory] = useState(null);
 
-  function addTask() {
+  function createTask() {
     const newTask = {
       id: crypto.randomUUID(),
       name: newTaskName,
@@ -56,7 +56,7 @@ export default function TaskList() {
         placeholder="New task"
         onChange={(e) => setNewTaskName(e.target.value)}
       />
-      <div className="task-button" onClick={addTask}>
+      <div className="task-button" onClick={createTask}>
         Add new task
       </div>
       <h1>Todo List</h1>
