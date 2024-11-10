@@ -5,7 +5,7 @@ export default function TaskList() {
     { id: crypto.randomUUID(), name: "Todo Task", isDone: false },
     { id: crypto.randomUUID(), name: "Done Task", isDone: true },
   ]);
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState(null);
 
   function addTask() {
     const newTaskName = prompt("New task: ");
@@ -34,30 +34,16 @@ export default function TaskList() {
   }
 
   function deleteTasks(type, deleteId = null) {
-    const newTaskList = tasks.filter(({ id, isDone }) => {
-      switch (type) {
-        case "done":
-          return !isDone;
-        case "single":
-          return id !== deleteId;
-        default:
-          return false;
-      }
-    });
+    const newTaskList = tasks.filter(({ id, isDone }) =>
+      type == "single" ? id !== deleteId : type == "done" ? !isDone : false
+    );
 
     setTasks(newTaskList);
   }
 
-  const visibleTasks = tasks.filter(({ isDone }) => {
-    switch (category) {
-      case "todo":
-        return !isDone;
-      case "done":
-        return isDone;
-      default:
-        return true;
-    }
-  });
+  const visibleTasks = tasks.filter(({ isDone }) =>
+    category == "todo" ? !isDone : category == "done" ? isDone : true
+  );
 
   return (
     <div className="task-container">
@@ -66,7 +52,7 @@ export default function TaskList() {
       </div>
       <h1>Todo List</h1>
       <div className="task-button-container">
-        <div className="task-button" onClick={() => setCategory("all")}>
+        <div className="task-button" onClick={() => setCategory(null)}>
           All
         </div>
         <div className="task-button" onClick={() => setCategory("todo")}>
@@ -109,7 +95,7 @@ export default function TaskList() {
         </div>
         <div
           className="task-button task-button-red"
-          onClick={() => deleteTasks()}
+          onClick={() => deleteTasks(null)}
         >
           Delete all tasks
         </div>
