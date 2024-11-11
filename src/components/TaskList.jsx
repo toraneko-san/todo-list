@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NewTaskForm from "./NewTaskForm";
 
 export default function TaskList() {
   const [tasks, setTasks] = useState([
@@ -7,13 +8,14 @@ export default function TaskList() {
   ]);
   const [category, setCategory] = useState(null);
 
-  function addTask() {
-    const newTaskName = prompt("New task: ");
+  function createTask(newTaskName) {
+    const newTask = {
+      id: crypto.randomUUID(),
+      name: newTaskName,
+      isDone: false,
+    };
 
-    setTasks([
-      ...tasks,
-      { id: crypto.randomUUID(), name: newTaskName, isDone: false },
-    ]);
+    setTasks([...tasks, newTask]);
   }
 
   function updateTaskState(id) {
@@ -47,9 +49,7 @@ export default function TaskList() {
 
   return (
     <div className="task-container">
-      <div className="task-button" onClick={addTask}>
-        Add new task
-      </div>
+      <NewTaskForm createTask={createTask} />
       <h1>Todo List</h1>
       <div className="task-button-container">
         <div className="task-button" onClick={() => setCategory(null)}>
