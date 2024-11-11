@@ -1,14 +1,14 @@
 import { useState } from "react";
+import NewTaskForm from "./NewTaskForm";
 
 export default function TaskList() {
   const [tasks, setTasks] = useState([
     { id: crypto.randomUUID(), name: "Todo Task", isDone: false },
     { id: crypto.randomUUID(), name: "Done Task", isDone: true },
   ]);
-  const [newTaskName, setNewTaskName] = useState("");
   const [category, setCategory] = useState(null);
 
-  function createTask() {
+  function createTask(newTaskName) {
     const newTask = {
       id: crypto.randomUUID(),
       name: newTaskName,
@@ -16,7 +16,6 @@ export default function TaskList() {
     };
 
     setTasks([...tasks, newTask]);
-    setNewTaskName("");
   }
 
   function updateTaskState(id) {
@@ -50,18 +49,7 @@ export default function TaskList() {
 
   return (
     <div className="task-container">
-      <input
-        type="text"
-        placeholder="New task"
-        onChange={(e) => setNewTaskName(e.target.value)}
-        value={newTaskName}
-      />
-      <div
-        className={`task-button ${newTaskName == "" && "task-button-disabled"}`}
-        onClick={createTask}
-      >
-        Add new task
-      </div>
+      <NewTaskForm createTask={createTask} />
       <h1>Todo List</h1>
       <div className="task-button-container">
         <div className="task-button" onClick={() => setCategory(null)}>
