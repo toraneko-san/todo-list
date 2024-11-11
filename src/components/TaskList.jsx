@@ -52,11 +52,14 @@ export default function TaskList() {
     <div className="task-container">
       <input
         type="text"
-        value={newTaskName}
         placeholder="New task"
         onChange={(e) => setNewTaskName(e.target.value)}
+        value={newTaskName}
       />
-      <div className="task-button" onClick={createTask}>
+      <div
+        className={`task-button ${newTaskName == "" && "task-button-disabled"}`}
+        onClick={createTask}
+      >
         Add new task
       </div>
       <h1>Todo List</h1>

@@ -92,6 +92,12 @@ ion-icon:hover {
   cursor: pointer;
 }
 
+.task-button-disabled {
+  opacity: 50%;
+  cursor: default;
+  pointer-events: none;
+}
+
 .task-button:hover {
   transform: scale(1.05);
 }
