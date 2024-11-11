@@ -94,7 +94,6 @@ ion-icon:hover {
 
 .task-button-disabled {
   opacity: 50%;
-  cursor: default;
   pointer-events: none;
 }
 
